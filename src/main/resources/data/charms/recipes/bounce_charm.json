@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "charms:charm_base"
+        },
+        {
+            "item": "minecraft:leather_boots"
+        },
+        {
+            "item": "minecraft:slime_block"
+        }
+    ],
+    "result": {
+        "item": "charms:bounce_charm",
+        "count": 1
+    }
+}

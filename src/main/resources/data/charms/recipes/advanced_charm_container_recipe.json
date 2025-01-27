@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#D#",
+        "DWD",
+        "#D#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:dragon_breath"
+        },
+        "D": {
+            "item": "minecraft:diamond_block"
+        },
+        "W": {
+            "item": "charms:charm_container"
+        }
+    },
+    "result": {
+        "item": "charms:advanced_charm_container",
+        "count": 1
+    }
+}

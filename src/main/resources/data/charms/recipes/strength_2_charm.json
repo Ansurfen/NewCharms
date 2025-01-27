@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "charms:strength_charm"
+        },
+        {
+            "item": "charms:charm_base"
+        }
+    ],
+    "result": {
+        "item": "charms:strength_2_charm",
+        "count": 1
+    }
+}

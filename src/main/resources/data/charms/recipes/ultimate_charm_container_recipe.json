@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#E#",
+        "EDE",
+        "#E#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:dragon_breath"
+        },
+        "E": {
+            "item": "minecraft:emerald_block"
+        },
+        "D": {
+            "item": "charms:advanced_charm_container"
+        }
+    },
+    "result": {
+        "item": "charms:ultimate_charm_container",
+        "count": 1
+    }
+}

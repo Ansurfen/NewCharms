@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "charms:block/ultimate_charm_container"
+    }
+  }
+}

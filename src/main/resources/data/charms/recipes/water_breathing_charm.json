@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "charms:charm_base"
+        },
+        {
+            "item": "minecraft:heart_of_the_sea"
+        }
+    ],
+    "result": {
+        "item": "charms:water_breathing_charm",
+        "count": 1
+    }
+}

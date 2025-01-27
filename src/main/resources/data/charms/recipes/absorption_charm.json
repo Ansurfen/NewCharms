@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "charms:charm_base"
+        },
+        {
+            "item": "minecraft:glistering_melon_slice"
+        }
+    ],
+    "result": {
+        "item": "charms:absorption_charm",
+        "count": 1
+    }
+}

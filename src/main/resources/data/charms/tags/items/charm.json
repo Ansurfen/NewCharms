@@ -1,0 +1,30 @@
+{
+  "replace": "false",
+  "values": [
+    "charms:saturation_charm",
+    "charms:speed_charm",
+    "charms:haste_charm",
+    "charms:strength_charm",
+    "charms:jump_charm",
+    "charms:nausea_charm",
+    "charms:slowness_charm",
+    "charms:mining_fatigue_charm",
+    "charms:blindness_charm",
+    "charms:levitation_charm",
+    "charms:resistance_charm",
+    "charms:night_vision_charm",
+    "charms:invisibility_charm",
+    "charms:water_breathing_charm",
+    "charms:dolphin_charm",
+    "charms:glowing_charm",
+    "charms:luck_charm",
+    "charms:slow_falling_charm",
+    "charms:absorption_charm",
+    "charms:fire_resistance_charm",
+    "charms:steel_toed_charm",
+    "charms:bounce_charm",
+    "charms:step_up_charm",
+    "charms:spider_charm",
+    "charms:fall_charm"
+  ]
+}

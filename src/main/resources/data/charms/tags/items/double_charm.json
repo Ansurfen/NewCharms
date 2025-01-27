@@ -1,0 +1,12 @@
+{
+  "replace": "false",
+  "values": [
+    "charms:jump_2_charm",
+    "charms:speed_2_charm",
+    "charms:haste_2_charm",
+    "charms:strength_2_charm",
+    "charms:jump_2_charm",
+    "charms:resistance_2_charm",
+    "charms:absorption_2_charm"
+  ]
+}

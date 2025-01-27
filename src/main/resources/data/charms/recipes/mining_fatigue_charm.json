@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "charms:charm_base"
+        },
+        {
+            "item": "minecraft:sponge"
+        }
+    ],
+    "result": {
+        "item": "charms:mining_fatigue_charm",
+        "count": 1
+    }
+}
