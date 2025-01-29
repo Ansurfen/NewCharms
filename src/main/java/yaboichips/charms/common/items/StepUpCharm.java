@@ -3,6 +3,7 @@ package yaboichips.charms.common.items;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
@@ -19,22 +20,10 @@ public class StepUpCharm extends CharmItem implements ICurioItem {
         LivingEntity entity = slotContext.entity();
         if (entity instanceof Player player) {
             if (player.isSprinting()) {
-                player.setMaxUpStep(1.0f);
+                player.getAttribute(Attributes.STEP_HEIGHT).setBaseValue(1.0f);
             } else {
-                player.setMaxUpStep(0.6f);
+                player.getAttribute(Attributes.STEP_HEIGHT).setBaseValue(0.6f);
             }
         }
-    }
-
-    @Override
-    public void playRightClickEquipSound(LivingEntity livingEntity, ItemStack stack) {
-        livingEntity.level().playSound(null, livingEntity.blockPosition(),
-                SoundEvents.ARMOR_EQUIP_ELYTRA, SoundSource.NEUTRAL,
-                1.0F, 1.0F);
-    }
-
-    @Override
-    public boolean canRightClickEquip(ItemStack stack) {
-        return true;
     }
 }

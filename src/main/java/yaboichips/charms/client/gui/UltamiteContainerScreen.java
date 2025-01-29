@@ -12,7 +12,7 @@ import yaboichips.charms.common.container.UltimateCharmContainer;
 
 public class UltamiteContainerScreen extends AbstractContainerScreen<UltimateCharmContainer> {
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(Charms.MOD_ID, "textures/gui/ultimate_container.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Charms.MOD_ID, "textures/gui/ultimate_container.png");
 
     public UltamiteContainerScreen(UltimateCharmContainer screenContainer, Inventory inv, Component titleIn) {
         super(screenContainer, inv, titleIn);
@@ -25,7 +25,7 @@ public class UltamiteContainerScreen extends AbstractContainerScreen<UltimateCha
 
     @Override
     public void render(GuiGraphics matrixStack, final int mouseX, final int mouseY, final float partialTicks) {
-        this.renderBackground(matrixStack);
+        this.renderBackground(matrixStack, mouseX, mouseY, partialTicks);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         this.renderTooltip(matrixStack, mouseX, mouseY);
     }

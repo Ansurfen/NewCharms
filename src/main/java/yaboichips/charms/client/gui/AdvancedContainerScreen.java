@@ -12,7 +12,7 @@ import yaboichips.charms.common.container.AdvancedCharmContainer;
 
 public class AdvancedContainerScreen extends AbstractContainerScreen<AdvancedCharmContainer> {
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(Charms.MOD_ID, "textures/gui/advanced_container.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Charms.MOD_ID, "textures/gui/advanced_container.png");
 
 
     public AdvancedContainerScreen(AdvancedCharmContainer screenContainer, Inventory inv, Component titleIn) {
@@ -27,7 +27,7 @@ public class AdvancedContainerScreen extends AbstractContainerScreen<AdvancedCha
 
     @Override
     public void render(GuiGraphics matrixStack, final int mouseX, final int mouseY, final float partialTicks) {
-        this.renderBackground(matrixStack);
+        this.renderBackground(matrixStack, mouseX, mouseY, partialTicks);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         this.renderTooltip(matrixStack, mouseX, mouseY);
     }

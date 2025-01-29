@@ -1,5 +1,6 @@
 package yaboichips.charms.common.items;
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.Item;
@@ -27,7 +28,7 @@ public class UpgradedCharmItem extends CharmItem implements ICurioItem {
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         Item item = stack.getItem();
         if (item instanceof UpgradedCharmItem charm) {
-            slotContext.entity().addEffect(new MobEffectInstance(charm.getCharmEffect(), length, 1));
+            slotContext.entity().addEffect(new MobEffectInstance(Holder.direct(charm.getCharmEffect()), length, 1));
         }
     }
 }

@@ -1,8 +1,6 @@
 package yaboichips.charms.common.tileentitys;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.ContainerHelper;
@@ -77,18 +75,19 @@ public class AdvancedCharmTE extends RandomizableContainerBlockEntity {
     }
 
     @Override
-    public void saveAdditional(CompoundTag compound) {
-        super.saveAdditional(compound);
-        if (!this.trySaveLootTable(compound)) {
-            ContainerHelper.saveAllItems(compound, this.chestContents);
+    protected void loadAdditional(CompoundTag p_335335_, HolderLookup.Provider provider) {
+        super.loadAdditional(p_335335_, provider);
+        this.chestContents = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+        if (!this.tryLoadLootTable(p_335335_)) {
+            ContainerHelper.loadAllItems(p_335335_, this.chestContents, provider);
         }
     }
 
-    public void load(CompoundTag p_155055_) {
-        super.load(p_155055_);
-        this.chestContents = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        if (!this.tryLoadLootTable(p_155055_)) {
-            ContainerHelper.loadAllItems(p_155055_, this.chestContents);
+    @Override
+    public void saveAdditional(CompoundTag compound, HolderLookup.Provider provider) {
+        super.saveAdditional(compound, provider);
+        if (!this.trySaveLootTable(compound)) {
+            ContainerHelper.saveAllItems(compound, this.chestContents, provider);
         }
     }
 
@@ -164,11 +163,11 @@ public class AdvancedCharmTE extends RandomizableContainerBlockEntity {
                 for (Player playerentity : list) {
                     if (itemInSlot instanceof CharmItem charm) {
                         if (charm.getCharmEffect() != null) {
-                            playerentity.addEffect(new MobEffectInstance(charm.getCharmEffect(), charm.length));
+                            playerentity.addEffect(new MobEffectInstance(Holder.direct(charm.getCharmEffect()), charm.length));
                         }
                         if (itemInSlot instanceof UpgradedCharmItem upcharm) {
                             if (charm.getCharmEffect() != null) {
-                                playerentity.addEffect(new MobEffectInstance(upcharm.getCharmEffect(), upcharm.length, 1));
+                                playerentity.addEffect(new MobEffectInstance(Holder.direct(upcharm.getCharmEffect()), upcharm.length, 1));
                             }
                         }
                     }

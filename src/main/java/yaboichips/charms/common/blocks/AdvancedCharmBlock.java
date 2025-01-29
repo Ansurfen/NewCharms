@@ -1,20 +1,23 @@
 package yaboichips.charms.common.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.EnchantmentMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.EnchantingTableBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.network.NetworkHooks;
+import yaboichips.charms.common.container.AdvancedCharmContainer;
 import yaboichips.charms.common.tileentitys.AdvancedCharmTE;
 import yaboichips.charms.core.CharmTileEntityTypes;
 
@@ -27,14 +30,19 @@ public class AdvancedCharmBlock extends BaseEntityBlock {
         super(properties);
     }
 
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return null;
+    }
+
+
 
     @Override
-    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player,
-                                 InteractionHand handIn, BlockHitResult result) {
+    public InteractionResult useWithoutItem(BlockState state, Level worldIn, BlockPos pos, Player player, BlockHitResult result) {
         if (!worldIn.isClientSide) {
             BlockEntity tile = worldIn.getBlockEntity(pos);
             if (tile instanceof AdvancedCharmTE) {
-                NetworkHooks.openScreen((ServerPlayer) player, (AdvancedCharmTE) tile, pos);
+                player.openMenu(this.getMenuProvider(state, worldIn, pos));
                 return InteractionResult.SUCCESS;
             }
         }
@@ -67,5 +75,16 @@ public class AdvancedCharmBlock extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return CharmTileEntityTypes.ADVANCED_CHARM_CONTAINER.get().create(blockPos, blockState);
+    }
+
+    @Nullable
+    protected MenuProvider getMenuProvider(BlockState p_335872_, Level p_334298_, BlockPos p_336351_) {
+        BlockEntity blockentity = p_334298_.getBlockEntity(p_336351_);
+        if (blockentity instanceof AdvancedCharmTE) {
+            Component component = ((Nameable)blockentity).getDisplayName();
+            return new SimpleMenuProvider((p_328554_, p_332165_, p_330050_) -> new AdvancedCharmContainer(p_328554_, p_332165_, new SimpleContainer(9)), component);
+        } else {
+            return null;
+        }
     }
 }

@@ -1,7 +1,9 @@
 package yaboichips.charms.util.events;
 
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.TickEvent;
@@ -20,16 +22,16 @@ public class CharmProperties {
         Item offhandItem = player.getOffhandItem().getItem();
         if (offhandItem instanceof CharmItem charm) {
             if (charm.getCharmEffect() != null) {
-                player.addEffect(new MobEffectInstance(charm.getCharmEffect(), 100));
+                player.addEffect(new MobEffectInstance(Holder.direct(charm.getCharmEffect()), 100));
             }
         }
         if (offhandItem instanceof UpgradedCharmItem upCharm) {
             if (upCharm.getCharmEffect() != null) {
-                player.addEffect(new MobEffectInstance(upCharm.getCharmEffect(), 50, 1));
+                player.addEffect(new MobEffectInstance(Holder.direct(upCharm.getCharmEffect()), 50, 1));
             }
         }
         if (player.getInventory().isEmpty()) {
-            player.setMaxUpStep(0.6f);
+            player.getAttribute(Attributes.STEP_HEIGHT).setBaseValue(0.6f);
         }
     }
 }
